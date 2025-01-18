@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    username: root
+    password: Mohamedd...012
+    url: jdbc:mysql://127.0.0.1:3306/bank
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+
+base:
+  url: "http://localhost:8080"
+
+application:
+  security:
+    jwt:
+      secret-key: 305c300d06092a864886f70d0101010500034b003048024100c3f9416425606f7604dd2185cea32306a8d183224047049d45c4ca9a9b834851b07df48d09ad1003d7faf01be9623c50710737ac89030e12da0787f294ef0203010001
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
