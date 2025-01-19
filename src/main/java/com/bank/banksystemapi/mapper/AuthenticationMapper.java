@@ -21,6 +21,7 @@ public class AuthenticationMapper {
                 .firstName(registerRequest.getFirstName())
                 .lastName(registerRequest.getLastName())
                 .email(registerRequest.getEmail())
+                .phoneNumber(registerRequest.getPhoneNumber())
                 .password(passwordEncoder.encode(registerRequest.getPassword()))
                 .roleType(RoleType.USER)
                 .address(registerRequest.getAddress())

@@ -15,23 +15,13 @@ public class WithdrawRequest {
 
     @Size(min = 4, max = 4 , message = "The CVV should be 4 numbers.")
     @Pattern(regexp = "^[0-9]+$", message = "The CVV should be only numbers.")
-    private String CVV;
+    private String cvv;
 
     @Positive(message = "The amount should be positive.")
     @Min(value = 5, message = "The amount should be greater than 5.")
     private double amount;
 
 
-    @Positive(message = "The amount should be positive.")
-    @Min(value = 5, message = "The amount should be greater than 5.")
-    public double getAmount() {
-        return amount;
-    }
 
 
-    @Size(min = 16, max = 16, message = "The card number should be 16 numbers.")
-    @Pattern(regexp = "^[0-9]+$", message = "The card number should be only numbers.")
-    public  String getCardNumber() {
-        return cardNumber;
-    }
 }

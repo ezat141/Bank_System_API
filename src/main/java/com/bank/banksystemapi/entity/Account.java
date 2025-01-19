@@ -52,25 +52,5 @@ public class Account {
         this.user = user;
     }
 
-//    public String getCardNumber() {
-//        return cardNumber;
-//    }
-//
-//    public String getCVV() {
-//        return CVV;
-//    }
-//
-//    public Double getBalance() {
-//        return balance;
-//    }
-//
-//    public Timestamp getCreatedAt() {
-//        return createdAt;
-//    }
-//
-//    public Boolean getStatus() {
-//        return status;
-//    }
-
 
 }

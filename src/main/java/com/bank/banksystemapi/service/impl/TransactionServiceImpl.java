@@ -93,9 +93,11 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     private Account validateAccountForWithdraw(WithdrawRequest withdrawRequest) {
-        String CVV = withdrawRequest.getCVV();
+        String CVV = withdrawRequest.getCvv();
         String cardNumber =withdrawRequest.getCardNumber();
-        boolean isAccountExists =accountService.isAccountExistsByCardNumberAndCVV(cardNumber, CVV);
+        System.out.println("CVV: " + CVV);
+        System.out.println("Card Number: " + cardNumber);
+        boolean isAccountExists =accountService.isAccountExistsByCardNumberAndCVV(cardNumber,CVV);
         if(!isAccountExists){
             throw new IllegalArgumentException("There is a wrong in the card number: "+cardNumber+" or in the CVV: "+CVV);
         }
