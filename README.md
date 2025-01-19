@@ -104,6 +104,14 @@ The application will start on `http://localhost:8080`.
 
 ---
 
+## API Documentation
+
+Explore our API endpoints using **Swagger UI**: [Swagger UI](http://localhost:8080/swagger-ui.html)
+
+**Note:** Make sure your server is running to access the Swagger UI.
+
+---
+
 ## API Endpoints
 
 ### Authentication
