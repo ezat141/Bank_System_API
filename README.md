@@ -176,6 +176,41 @@ The application will start on `http://localhost:8080`.
 | `account_id`      | BIGINT        | Foreign key to `Account` table. |
 
 ---
+erDiagram
+BANK_USER ||--o{ CARD : "has"
+BANK_USER{
+    int id pk
+    string name
+    string passward
+    string email
+    string phone_number
+    string addrees
+    string status
+    string role
+    date creation_date
+}
+
+CARD ||--o{ TRANSACTION : "has"
+CARD {
+    int id pk
+    int user_id fk
+    string card_number
+    int csv
+    double balance
+    string state
+    date creation_date
+}
+
+TRANSACTION{
+    int id pk
+    int card_id fk
+    string type(deposite)(withdraw)
+    int amount
+    date time
+}
+
+
+---
 
 ## Contributing
 
