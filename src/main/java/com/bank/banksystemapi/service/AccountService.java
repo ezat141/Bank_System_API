@@ -10,10 +10,13 @@ import java.util.List;
 public interface AccountService {
     AccountResponse createAccount();
     List<AccountResponse> getUserAccounts();
-    List<AccountTransactionsHistoryResponseDto> getUserAccountTransactions(Long id);
+//    List<AccountTransactionsHistoryResponseDto> getUserAccountTransactions(Long id);
+    List<AccountTransactionsHistoryResponseDto> getUserAccountTransactions();
     AccountActivityResponse deactivateAccount(String cardNumber);
     AccountActivityResponse activateAccount(String cardNumber);
     boolean isAccountExistsByCardNumberAndCVV(String cardNumber,String cvv);
+    Double viewAuthenticatedAccountBalance();
+    String getAuthenticatedAccountCardNumber();
     boolean isAccountExistsByCardNumber(String cardNumber);
     Account findAccountById(Long accountId);
 

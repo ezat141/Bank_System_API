@@ -57,10 +57,24 @@ public class AccountServiceImpl implements AccountService {
                 .toList();
     }
 
+
+/*
     @Override
     public List<AccountTransactionsHistoryResponseDto> getUserAccountTransactions(Long accountId) {
         User user = userService.getCurrentUser();
         List<Transaction> allUserTransactions = transactionRepository.getTransactionsHistoryByAccountId(accountId);
+
+
+        return allUserTransactions.stream()
+                .map(transactionMapper::toResponse)
+                .collect(Collectors.toList());
+    }*/
+
+    @Override
+    public List<AccountTransactionsHistoryResponseDto> getUserAccountTransactions() {
+        User user = userService.getCurrentUser();
+        Account userAccount = accountRepository.getAccountByUserId(user.getId());
+        List<Transaction> allUserTransactions = transactionRepository.getTransactionsHistoryByAccountId(userAccount.getId());
 
 
         return allUserTransactions.stream()
@@ -102,6 +116,20 @@ public class AccountServiceImpl implements AccountService {
     public boolean isAccountExistsByCardNumberAndCVV(String cardNumber, String cvv) {
 
         return accountRepository.existsByCardNumberAndCVV(cardNumber, cvv);
+    }
+
+    @Override
+    public Double viewAuthenticatedAccountBalance() {
+        User user = userService.getCurrentUser();
+        Account userAccount = accountRepository.getAccountByUserId(user.getId());
+        return userAccount.getBalance();
+    }
+
+    @Override
+    public String getAuthenticatedAccountCardNumber() {
+        User user = userService.getCurrentUser();
+        Account userAccount = accountRepository.getAccountByUserId(user.getId());
+        return userAccount.getCardNumber();
     }
 
     @Override

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/bank/account")
 public class AccountController {
@@ -34,9 +35,16 @@ public class AccountController {
                 .body(accountService.getUserAccounts());
     }
 
-    @GetMapping("/{accountId}")
-    public ResponseEntity<List<AccountTransactionsHistoryResponseDto>> getAccountHistory(@PathVariable Long accountId){
-        List<AccountTransactionsHistoryResponseDto> transactionHistory = accountService.getUserAccountTransactions(accountId);
+//    @GetMapping("/{accountId}")
+//    public ResponseEntity<List<AccountTransactionsHistoryResponseDto>> getAccountHistory(@PathVariable Long accountId){
+//        List<AccountTransactionsHistoryResponseDto> transactionHistory = accountService.getUserAccountTransactions(accountId);
+//        return ResponseEntity.status(HttpStatus.OK)
+//                .body(transactionHistory);
+//    }
+
+    @GetMapping("/transactions")
+    public ResponseEntity<List<AccountTransactionsHistoryResponseDto>> getAccountHistory(){
+        List<AccountTransactionsHistoryResponseDto> transactionHistory = accountService.getUserAccountTransactions();
         return ResponseEntity.status(HttpStatus.OK)
                 .body(transactionHistory);
     }
@@ -52,6 +60,17 @@ public class AccountController {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(accountService.deactivateAccount(cardNumber));
     }
+
+    @GetMapping("/balance")
+    public ResponseEntity<Double> viewCurrentAccountBalance(){
+        return new ResponseEntity<>(accountService.viewAuthenticatedAccountBalance(), HttpStatus.OK);
+    }
+
+    @GetMapping("/cardNumber")
+    public ResponseEntity<String> getCurrentAccountCardNumber(){
+        return ResponseEntity.ok(accountService.getAuthenticatedAccountCardNumber());
+    }
+
 
 
 

@@ -63,7 +63,7 @@ public class ApplicationConf {
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
         // Add your frontend origin here or use "*" for allowing all origins (not recommended for production)
-        config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:34659"));
+        config.setAllowedOrigins(Arrays.asList("http://localhost:4200", "http://localhost:63233"));
         config.setAllowedHeaders(Arrays.asList(
                 HttpHeaders.ORIGIN,
                 HttpHeaders.CONTENT_TYPE,
