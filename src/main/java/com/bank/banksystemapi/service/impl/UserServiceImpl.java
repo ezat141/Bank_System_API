@@ -1,5 +1,4 @@
 package com.bank.banksystemapi.service.impl;
-
 import com.bank.banksystemapi.entity.User;
 import com.bank.banksystemapi.mapper.UserMapper;
 import com.bank.banksystemapi.model.UserActivityResponse;
@@ -10,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @Service
@@ -60,13 +60,37 @@ public class UserServiceImpl implements UserService {
         return userMapper.toUserResponse(user);
     }
 
-    @Override
-    public UserActivityResponse deactivateMyUser() {
-        User user = getCurrentUser();
+//    @Override
+//    public UserActivityResponse deactivateMyUser() {
+//        User user = getCurrentUser();
+//        user.setStatus(false);
+//        userRepository.save(user);
+//        return UserActivityResponse.builder()
+//                .message("User is deactivated, Login again to activate it")
+//                .build();
+//    }
+
+    public UserActivityResponse deactivateMyUser(Long id){
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("user not found"));
         user.setStatus(false);
         userRepository.save(user);
         return UserActivityResponse.builder()
-                .message("User is deactivated, Login again to activate it")
+                .message("User deactivated")
+                .timestamp(new Timestamp(System.currentTimeMillis()))
                 .build();
     }
+
+    @Override
+    public UserActivityResponse activateMyUser(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("user not found"));
+        user.setStatus(true);
+        userRepository.save(user);
+        return UserActivityResponse.builder()
+                .message("User activated")
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .build();
+    }
+
 }

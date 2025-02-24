@@ -13,6 +13,8 @@ public interface UserService {
     boolean existsUserEmailOrPhone(String email, String phoneNumber);
     List<UserResponse> getAllUsers();
     UserResponse getProfileInfo();
-    UserActivityResponse deactivateMyUser();
+//    UserActivityResponse deactivateMyUser();
+    UserActivityResponse deactivateMyUser(Long id);
+    UserActivityResponse activateMyUser(Long id);
 
 }

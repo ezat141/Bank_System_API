@@ -31,13 +31,27 @@ public class UserController {
                 .body(userService.getProfileInfo());
     }
 
-    @PutMapping
-    public ResponseEntity<UserActivityResponse> deactivateMyUser(){
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(userService.deactivateMyUser());
+//    @PutMapping
+//    public ResponseEntity<UserActivityResponse> deactivateMyUser(){
+//        return ResponseEntity
+//                .status(HttpStatus.OK)
+//                .body(userService.deactivateMyUser());
+//
+//    }
 
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<UserActivityResponse> deactivateUser(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userService.deactivateMyUser(id));
     }
+
+    @PutMapping("/{id}/activate")
+    public ResponseEntity<UserActivityResponse> activateUser(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userService.activateMyUser(id));
+    }
+
+
 
 
 
