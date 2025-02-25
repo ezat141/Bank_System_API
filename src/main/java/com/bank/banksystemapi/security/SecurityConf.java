@@ -40,7 +40,7 @@ public class SecurityConf {
                         .permitAll()
                         .requestMatchers(HttpMethod.GET, "/bank/user/users").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/bank/user/**").hasAuthority("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/bank/account").hasAuthority("ADMIN")
+//                        .requestMatchers(HttpMethod.POST, "/bank/account").hasAuthority("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/bank/account/**").hasAuthority("ADMIN")
                         // Any other requests must be authenticated
                         .anyRequest()
